@@ -1,12 +1,3 @@
-<?php
-session_start();
-
-if (!isset($_SESSION['username'])) {
-    header("Location: login.php");
-    exit();
-}
-?>
-
 <!DOCTYPE html>
 <html lang="id">
 <head>
@@ -44,7 +35,7 @@ if (!isset($_SESSION['username'])) {
         label {
             font-size: 16px;
         }
-        input, textarea {
+        input, textarea, select {
             width: 100%;
             padding: 10px;
             margin-bottom: 10px;
@@ -52,13 +43,22 @@ if (!isset($_SESSION['username'])) {
             border-radius: 4px;
             font-size: 14px;
         }
+        .file-upload {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 10px;
+        }
+        .file-upload input[type="file"] {
+            flex: 1;
+        }
         button {
             background-color: #004d99;
             color: white;
             padding: 10px 20px;
             border: none;
             border-radius: 4px;
-            font-size: 16px;
+            font-size: 14px;
             cursor: pointer;
         }
         button:hover {
@@ -69,9 +69,6 @@ if (!isset($_SESSION['username'])) {
             padding: 20px;
             margin-top: 20px;
             border-radius: 8px;
-        }
-        .info-section p {
-            font-size: 16px;
         }
         .footer {
             background-color: #004d99;
@@ -92,7 +89,7 @@ if (!isset($_SESSION['username'])) {
 
     <div class="container">
         <h2>Formulir Pendaftaran Kursus Mengemudi</h2>
-        <form method="POST" action="konfirmasi.php">
+        <form method="POST" action="konfirmasi.php" enctype="multipart/form-data">
             <label for="nama">Nama Lengkap</label>
             <input type="text" id="nama" name="nama" required>
 
@@ -104,6 +101,20 @@ if (!isset($_SESSION['username'])) {
 
             <label for="jam_kursus">Jam Kursus</label>
             <input type="text" id="jam_kursus" name="jam_kursus" required>
+
+            <label for="metode_pembayaran">Metode Pembayaran</label>
+            <select id="metode_pembayaran" name="metode_pembayaran" onchange="toggleBuktiPembayaran()" required>
+                <option value="transfer">Transfer</option>
+                <option value="cash">Cash</option>
+            </select>
+
+            <div id="upload-section" style="display: flex; flex-direction: column;">
+                <label for="bukti_pembayaran">Upload Bukti Pembayaran</label>
+                <div class="file-upload">
+                    <input type="file" id="bukti_pembayaran" name="bukti_pembayaran" accept="image/*">
+                    <button type="button" onclick="hapusFile()">Hapus</button>
+                </div>
+            </div>
 
             <button type="submit" name="submit">Daftar</button>
         </form>
@@ -120,5 +131,28 @@ if (!isset($_SESSION['username'])) {
     <div class="footer">
         <p>&copy; 2024 DriveSmart Academy. All Rights Reserved.</p>
     </div>
+
+    <script>
+        function toggleBuktiPembayaran() {
+            const metode = document.getElementById('metode_pembayaran').value;
+            const uploadSection = document.getElementById('upload-section');
+            const buktiPembayaran = document.getElementById('bukti_pembayaran');
+
+            if (metode === 'cash') {
+                uploadSection.style.display = 'none';
+                buktiPembayaran.removeAttribute('required');
+            } else {
+                uploadSection.style.display = 'flex';
+                buktiPembayaran.setAttribute('required', 'required');
+            }
+        }
+
+        function hapusFile() {
+            if (confirm('Apakah Anda yakin ingin menghapus file ini?')) {
+                document.getElementById('bukti_pembayaran').value = '';
+                alert('File telah dihapus.');
+            }
+        }
+    </script>
 </body>
 </html>
