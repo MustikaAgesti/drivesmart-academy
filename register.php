@@ -1,24 +1,18 @@
 <?php
-// Koneksi ke database
 include('db.php');
 
 if (isset($_POST['submit'])) {
-    // Ambil data dari form
     $username = mysqli_real_escape_string($conn, $_POST['username']);
     $password = mysqli_real_escape_string($conn, $_POST['password']);
     $email = mysqli_real_escape_string($conn, $_POST['email']);
-
-    // Hash password sebelum disimpan
     $hashed_password = password_hash($password, PASSWORD_DEFAULT);
 
-    // Cek apakah username sudah ada
     $query = "SELECT * FROM users WHERE username = '$username'";
     $result = $conn->query($query);
 
     if ($result->num_rows > 0) {
         echo "<p style='color: red; text-align: center;'>Username sudah terdaftar!</p>";
     } else {
-        // Masukkan data ke tabel users
         $insert_query = "INSERT INTO users (username, password, email) VALUES ('$username', '$hashed_password', '$email')";
         if ($conn->query($insert_query) === TRUE) {
             echo "<p style='color: green; text-align: center;'>Pendaftaran berhasil! Silakan <a href='login.php'>login</a>.</p>";
