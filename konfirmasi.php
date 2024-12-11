@@ -1,8 +1,6 @@
 <?php
-// Mulai sesi
 session_start();
 
-// Cek apakah pengguna sudah login
 if (!isset($_SESSION['username'])) {
     header("Location: login.php");
     exit();
@@ -87,7 +85,6 @@ if (!isset($_SESSION['username'])) {
         <p>Setelah konfirmasi, kami akan segera menghubungi Anda untuk jadwal kursus lebih lanjut.</p>
     </div>
 
-    <!-- Tempatkan tombol Kembali ke Home dan Log Out di sini -->
     <div class="action-links">
         <a href="index.php">Kembali ke Home</a>
         <a href="logout.php">Log Out</a>
