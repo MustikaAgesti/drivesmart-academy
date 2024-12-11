@@ -1,8 +1,6 @@
 <?php
-// Mulai sesi
 session_start();
 
-// Cek apakah pengguna sudah login
 if (!isset($_SESSION['username'])) {
     header("Location: login.php");
     exit();
@@ -110,7 +108,6 @@ if (!isset($_SESSION['username'])) {
             <button type="submit" name="submit">Daftar</button>
         </form>
 
-        <!-- Informasi Harga dan Lokasi -->
         <div class="info-section">
             <p><strong>Harga per bulan: Rp 500.000</strong></p>
             <p><strong>Nomor Rekening untuk Pembayaran:</strong><br>
