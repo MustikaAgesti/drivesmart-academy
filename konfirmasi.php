@@ -86,6 +86,7 @@ if (!isset($_SESSION['username'])) {
     </div>
 
     <div class="action-links">
+        <a href="pendaftaran.php">Edit Formulir Pendaftaran</a>
         <a href="index.php">Kembali ke Home</a>
         <a href="logout.php">Log Out</a>
     </div>
