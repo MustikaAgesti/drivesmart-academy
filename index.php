@@ -41,8 +41,8 @@ session_start();
         }
 
         .content img {
-            width: 50%; /* Mengatur gambar agar tidak terlalu besar */
-            max-width: 800px; /* Membatasi ukuran gambar */
+            width: 50%;
+            max-width: 800px;
             height: auto;
             border-radius: 10px;
             margin-top: 20px;
@@ -112,32 +112,27 @@ session_start();
             bottom: 0;
         }
 
-        /* Menjaga jarak tombol agar tidak terhalang footer */
         .content {
             padding-bottom: 100px;
         }
     </style>
 </head>
 <body>
-    <!-- Header Section -->
+
     <div class="header">
         <h1>Selamat Datang di DriveSmart Academy</h1>
         <p>Kursus Mengemudi Privat dengan Instruktur Profesional</p>
     </div>
 
-    <!-- Main Content Section -->
     <div class="content">
-        <!-- Gambar Kantor -->
         <img src="https://kursusmengemudiprivate.co.id/wp-content/uploads/2023/08/Revisi-Profil-Kursus-Mengemudi-Private.png" alt="Kantor DriveSmart Academy">
 
-        <!-- Penjelasan Singkat -->
         <div class="intro-text">
             <p><span class="highlight">DriveSmart Academy</span></p>
             <p>Kami adalah solusi terbaik untuk belajar mengemudi dengan aman dan nyaman.</p>
             <p>Di DriveSmart Academy, kami menawarkan kursus mengemudi privat yang dirancang khusus untuk kebutuhan Anda, dengan instruktur profesional dan metode pengajaran yang mudah dipahami.</p>
         </div>
 
-        <!-- Daftar Manfaat -->
         <div class="benefits">
             <h3>Mengapa Memilih DriveSmart Academy?</h3>
             <ul>
@@ -148,7 +143,6 @@ session_start();
             </ul>
         </div>
 
-        <!-- Call to Action Button -->
         <a href="pendaftaran.php" class="cta-button">Daftar Sekarang</a>
     </div>
 
